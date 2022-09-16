@@ -31,7 +31,27 @@ public class LinkedListDemo {
          * String nodes.
          * 
          */
-
-    }
+    	LinkedList<String> link = new LinkedList<String>();
+    	link.add("Something1");
+    	link.add("Something2");
+    	link.add("Something3");
+    	link.add("Something4");
+    	link.add("Something5");
+    	link.remove(2);
+    	link.getHead();
+    	link.print();
+    	Node<String> head = new Node<String>("test");
+    	Node<String> tail = new Node<String>("testEnd");
+    	link.setHead(head);
+    	link.setTail(tail);
+    	link.getTail();
+    	link.getHead();
+    	link.add("Something1");
+    	link.add("Something2");
+    	link.add("Something3");
+    	link.add("Something4");
+    	link.add("Something5");
+    	link.print();
+    }	
 
 }
