@@ -27,9 +27,9 @@ public class SpiesOnATrain {
     	Node<TrainCar> tail = train.getTail();
     	Node<TrainCar> current = train.getHead();
     	ArrayList<String> passClue = new ArrayList<String>();
-    	ArrayList<String> passName = new ArrayList<String>();
+    	HashMap<String, Integer> people = new HashMap<String, Integer>();
     	while (!(current == null)) {
-    		passName.add("" + current.getValue());
+    		people.put("" + current.getValue(),0);
     		String print = current.getValue().questionPassenger(); 		
 			passClue.add(print);
 			System.out.println(print);
@@ -39,12 +39,20 @@ public class SpiesOnATrain {
 			System.out.println(clues[i]);
 			for (int j = 0; j < passClue.size(); j++) {
 				if (passClue.get(j).contains(clues[i] + ".")) {
-					
+					for (String p : people.keySet()) {
+						if (passClue.get(j).contains(p)) {
+							people.put(p, people.get(p) + 1);
+						}
+					}
 				}
 				
 			}
 		}
-    	
+    	for (String p : people.keySet()) {
+    		if (people.get(p)==3) {
+    			return p;
+			}
+    	}
     	return "";
 
     }
