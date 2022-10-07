@@ -47,13 +47,16 @@ public class RainbowZombieCongaLine {
     public void jumpInTheLine(Zombie dancer, int position) {
     	Node<Zombie> zomb = new Node<Zombie>(dancer);
     	Node<Zombie> current = congaLine.getHead();
-    	Node<Zombie> current2 = congaLine.getHead();
-    	current2.getNext();
     	for (int i = 0; i < position; i++) {
 			current = current.getNext();
-			current2 = current2.getNext();
+			
+			
 		}
     	//NEED TO COME BACK TO THIS. NEED TO BREAK THE TWO SIDES OF THE POSITION AND INSERT THE NEW ONE
+    	//a.next.prev
+    	//c.next
+    	//a.next
+    	//c.prev
     }
 
     /*
@@ -65,6 +68,7 @@ public class RainbowZombieCongaLine {
     	int position = 0;
     	while(!(current==null)) {
 			if (dancer.getZombieHatColor().equals(current.getValue().getZombieHatColor())) {
+				System.out.println("remove");
 				congaLine.remove(position);
 			}
 			position += 1;
@@ -94,7 +98,10 @@ public class RainbowZombieCongaLine {
      * add one to the front, one to the end and one in the middle.
      */
     public void brains(Zombie dancer) {
-
+    	Node<Zombie> three = new Node<Zombie>(dancer);
+    	congaLine.setHead(three);
+    	congaLine.setTail(three);
+    	int position = congaLine.size()/2;
     }
 
     /*
@@ -102,7 +109,13 @@ public class RainbowZombieCongaLine {
      * color to the end of the line.
      */
     public void rainbowBrains(Zombie dancer) {
-
+    	Node<Zombie> head = new Node<Zombie>(dancer);
+    	congaLine.setHead(head);
+    	for (ZombieHatColor c : zombieHats) {
+			congaLine.add(new Zombie(c));
+			
+		}
+    	
     }
 
     public LinkedList<Zombie> getCongaLine() {
