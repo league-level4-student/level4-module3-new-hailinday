@@ -70,7 +70,7 @@ public class RainbowZombieDanceParty {
                 break;
 
             case JUMP_IN_THE_LINE:
-                int position = rand.nextInt(congaLine.size());
+                int position = rand.nextInt(congaLine.size()-1);
                 System.out.print(" | " + "Position: " + position);
                 danceParty.jumpInTheLine(dancer, position);
                 break;
