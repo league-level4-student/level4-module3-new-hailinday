@@ -25,7 +25,7 @@ public class RainbowZombieCongaLine {
     private ZombieHatColor[] zombieHats;
 
     public RainbowZombieCongaLine() {
-
+    	System.out.println("Loop?");
         congaLine = new LinkedList<Zombie>();
         zombieHats = ZombieHatColor.values();
 
@@ -33,6 +33,7 @@ public class RainbowZombieCongaLine {
 
     // Make the passed in zombie the first Zombie in the conga line!
     public void engine(Zombie dancer) {
+    	System.out.println("Loop1?");
     	Node<Zombie> head = new Node<Zombie>(dancer);
     	Node<Zombie> current = congaLine.getHead();
     	current.setPrev(head);
@@ -42,12 +43,14 @@ public class RainbowZombieCongaLine {
 
     // Make the passed in zombie the last Zombie in the conga line!
     public void caboose(Zombie dancer) {
+    	System.out.println("Loop2?");
     	Node<Zombie> tail = new Node<Zombie>(dancer);
     	congaLine.add(dancer);
     }
 
     // Place the zombie at the designated position in the conga line!
     public void jumpInTheLine(Zombie dancer, int position) {
+    	System.out.println("Loop?3");
     	Node<Zombie> zomb = new Node<Zombie>(dancer);
     	Node<Zombie> current = congaLine.getHead();
     	for (int i = 0; i < position; i++) {
@@ -66,13 +69,15 @@ public class RainbowZombieCongaLine {
      * the conga line!
      */
     public void everyoneOut(Zombie dancer) {
+    	System.out.println("Loop4?");
     	Node<Zombie> current = congaLine.getHead();
     	int position = 0;
     	while(!(current==null)) {
 			if (dancer.getZombieHatColor().equals(current.getValue().getZombieHatColor())) {
 				congaLine.remove(position);
-			}
+			} else {
 			position += 1;
+			}
 			current = current.getNext();
     	}
     }
@@ -82,6 +87,7 @@ public class RainbowZombieCongaLine {
      * from the conga line!
      */
     public void youAreDone(Zombie dancer) {
+    	System.out.println("Loop5?");    
     	Node<Zombie> current = congaLine.getHead();
     	int position = 0;
     	while(!(current==null)) {
@@ -99,6 +105,7 @@ public class RainbowZombieCongaLine {
      * add one to the front, one to the end and one in the middle.
      */
     public void brains(Zombie dancer) {
+    	System.out.println("Loop?6");
     	Node<Zombie> current = congaLine.getHead();
     	Node<Zombie> middle = congaLine.getHead();
     	Node<Zombie> three = new Node<Zombie>(dancer);
@@ -109,7 +116,7 @@ public class RainbowZombieCongaLine {
     	for (int i = 0; i < (congaLine.size()/2); i++) {
 			middle = middle.getNext();
 		}
-    	Node<Zombie> next = current.getNext();
+    	Node<Zombie> next = middle.getNext();
     	middle.setNext(three);
     	next.setPrev(three);
     	three.setPrev(middle);
@@ -121,13 +128,14 @@ public class RainbowZombieCongaLine {
      * color to the end of the line.
      */
     public void rainbowBrains(Zombie dancer) {
+    	System.out.println("Loop?7");
     	Node<Zombie> head = new Node<Zombie>(dancer);
     	Node<Zombie> current = congaLine.getHead();
     	if (congaLine.size()==0) {
 			congaLine.add(dancer);
 		}
     	else {
-        	current.setPrev(head);
+    		current.setPrev(head);
         	head.setNext(current);
         	congaLine.setHead(head);
     	}
@@ -140,3 +148,5 @@ public class RainbowZombieCongaLine {
         return congaLine;
     }
 }
+
+//rainbowbrain, engine, everyoneout (not working properly), you are done, caboose, jump in the line
