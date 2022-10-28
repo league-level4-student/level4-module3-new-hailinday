@@ -1,5 +1,7 @@
 package _03_Intro_to_Binary_Trees;
 
+import java.util.Iterator;
+
 public class BinaryTreeDemo {
 
     /*
@@ -33,7 +35,19 @@ public class BinaryTreeDemo {
      */
 
     public static void main(String[] args) {
-
+    	BinaryTree<Integer> tree = new BinaryTree<Integer>();
+    	tree.insert(5);
+    	for (int i = 0; i < 11; i++) {
+			tree.insert(i);
+		}
+    	for (int i = 0; i > -11; i--) {
+			tree.insert(i);
+		}
+    	tree.delete(-3);
+    	tree.printHorizontal();
+    	
+    	Node<Integer> current = tree.getRoot();
+    	
     }
 
 }
