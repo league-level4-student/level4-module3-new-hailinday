@@ -45,9 +45,12 @@ public class BinaryTreeDemo {
 		}
     	tree.delete(-3);
     	tree.printHorizontal();
-    	
-    	Node<Integer> current = tree.getRoot();
-    	
+    	for (int i = -10; i < 11; i++) {
+			tree.delete(i);
+			tree.insert(i-1);
+		}
+    	tree.search(3);
+    	tree.printHorizontal();    	
     }
 
 }

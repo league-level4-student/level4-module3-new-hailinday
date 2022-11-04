@@ -1,4 +1,4 @@
-package _04_Morse_Code;
+ package _04_Morse_Code;
 
 public class MorseCode implements Comparable<MorseCode> {
 

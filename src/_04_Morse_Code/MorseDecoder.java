@@ -1,17 +1,26 @@
 package _04_Morse_Code;
 
 import _03_Intro_to_Binary_Trees.BinaryTree;
+import _03_Intro_to_Binary_Trees.Node;
+
+import java.util.Iterator;
+import java.util.Scanner;
 
 public class MorseDecoder {
 
     BinaryTree<MorseCode> mcTree = new BinaryTree<MorseCode>();
 
     public static void main(String[] args) {
-
+    	
         MorseDecoder md = new MorseDecoder();
         md.initialize();
         md.decode();
-
+    }
+    
+    public String recursiveSearch(String value) {
+    	Node<MorseCode> morser = mcTree.search(new MorseCode("blah",value));
+    	System.out.println("Working?");
+    	return morser.getValue().getDecoded();
     }
 
     public void initialize() {
@@ -56,7 +65,7 @@ public class MorseDecoder {
      * print it to the console:
      * 
      * -.-- --- ..- .- .-. . .- -- .- --.. .. -. --.
-     * 
+     * y      o  u   a  r  e  a m  a   z    i n  g
      * 2.) Then use the binary tree and the scanner class to create a morse code
      * translator. The user should be able to type multiple letters in morse
      * code on a single line and have it repeated back to them, decoded into the
@@ -64,7 +73,21 @@ public class MorseDecoder {
      * 
      */
     void decode() {
-        String morseCode = "-.-- --- ..- .- .-. . .- -- .- --.. .. -. --.";
-    }
+    	String decoder = "";
+    	String morseCode = "-.-- --- ..- .- .-. . .- -- .- --.. .. -. --.";
+        Scanner kb = new Scanner(System.in);
+        System.out.println("Enter a sentence in morse code: ");
+        String morse = morseCode;
+        int set = 0;
+        for (int i = 0; i < morse.length(); i++) {
+			if (morse.charAt(i)==' ' || i==morse.length()-1) {
+				decoder = decoder + recursiveSearch(morse.substring(set,i));
+				set = i+1;
+			} //NEED TO CREATE AN ELSE IF FOR THE SUBSTRING INSTEAD OF THE OR STATEMENT
+		
+        }
+        System.out.println("Working???");
+        System.out.println(decoder);
 
+    }
 }
