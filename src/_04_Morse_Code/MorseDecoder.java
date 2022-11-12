@@ -19,12 +19,11 @@ public class MorseDecoder {
     
     public String recursiveSearch(String value) {
     	Node<MorseCode> morser = mcTree.search(new MorseCode("blah",value));
-    	System.out.println("Working?");
     	return morser.getValue().getDecoded();
     }
 
     public void initialize() {
-
+    	
         mcTree.insert(new MorseCode("start", ""));
         mcTree.insert(new MorseCode("e", "."));
         mcTree.insert(new MorseCode("t", "-"));
@@ -80,13 +79,14 @@ public class MorseDecoder {
         String morse = morseCode;
         int set = 0;
         for (int i = 0; i < morse.length(); i++) {
-			if (morse.charAt(i)==' ' || i==morse.length()-1) {
+			if (morse.charAt(i)==' ') {
 				decoder = decoder + recursiveSearch(morse.substring(set,i));
 				set = i+1;
-			} //NEED TO CREATE AN ELSE IF FOR THE SUBSTRING INSTEAD OF THE OR STATEMENT
+			} else if (i==morse.length()-1) {
+				decoder = decoder + recursiveSearch(morse.substring(set,i+1));
+			}
 		
         }
-        System.out.println("Working???");
         System.out.println(decoder);
 
     }
